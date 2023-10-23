@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NBP App</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'nbp/style.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'images/dollar.png' %}">
+</head>
+<body>
+    <header>
+        <nav class="menu">
+            <a href="{% url 'nbp:home-view' %}">
+                <img src="{% static 'images/nbp.jpg' %}">
+            </a>
+            <ul class="menu-list">
+                <li class="menu-link auth-button"><a href="{% url 'nbp:currencies-view' %}">Currencies</a></li>
+                <li class="menu-link auth-button"><a href="{% url 'nbp:gold-view' %}">Gold</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    {% if messages %}
+        <div class="message-display">
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

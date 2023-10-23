@@ -1,0 +1,24 @@
+{% extends 'nbp/base.html' %}
+{% block content %}
+<div class="content">
+    <div class="left">
+        <div class="info">
+
+        </div>
+    </div>
+    <div class="right">
+        <div class="pln-exchange">
+            <h3>PLN exchange rate</h3>
+            <ul>
+                {% for rate in nbp_data.0.rates %}
+                    {% if rate.ask is not None %}
+                        <li>{{ rate.code }}: {{ rate.ask }}</li>
+                    {% else %}
+                        <li>ERROR FETCHING DATA</li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
